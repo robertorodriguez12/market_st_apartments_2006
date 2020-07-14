@@ -1,0 +1,6 @@
+class Building
+
+  
+
+
+end
