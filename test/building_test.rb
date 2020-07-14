@@ -10,7 +10,24 @@ class BuildingTest < MiniTest::Test
     building = Building.new
 
     assert_instance_of Building, building
-  end 
+  end
+
+  def test_building_has_no_units
+    building = Building.new
+
+    assert_nil nil, building.units
+  end
+
+  def test_building_can_add_units
+    building = Building.new
+    unit1 = Apartment.new({number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1})
+    unit2 = Apartment.new({number: "B2", monthly_rent: 999, bathrooms: 2, bedrooms: 2})
+
+    building.add_unit(unit1)
+    building.add_unit(unit2)
+
+    assert_equal [unit1, unit2], building.units
+  end
 
 end
 
@@ -21,24 +38,11 @@ end
 
 
 
-# => true
 
-# # => #<Building:0x00007f83778c5a80...>
-#
-#  building.units
-# # => []
-#
-#  unit1 = Apartment.new({number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1})
-# # => #<Apartment:0x00007f8377209bb0...>
-#
-#  unit2 = Apartment.new({number: "B2", monthly_rent: 999, bathrooms: 2, bedrooms: 2})
-# # => #<Apartment:0x00007f83779f0900...>
-#
-#  building.add_unit(unit1)
-#
-#  building.add_unit(unit2)
-#
-#  building.units
+
+
+
+
 # # => [#<Apartment:0x00007f8377209bb0...>, #<Apartment:0x00007f83779f0900...>]
 #
 #  building.renters
